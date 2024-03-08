@@ -22,3 +22,8 @@ Route::get('/evento' , function()
     {
         return view('client.events');
     });
+
+    Route::get('/register' , function()
+    {
+        return view('register');
+    });
