@@ -37,7 +37,7 @@ class UserController extends Controller
 
     public function logout (){
         auth()->logout();
-        return redirect('/home') ;
+        return redirect('/evento') ;
     }
 
     public function login(Request $request)
