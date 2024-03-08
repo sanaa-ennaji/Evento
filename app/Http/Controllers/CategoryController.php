@@ -20,8 +20,9 @@ class CategoryController extends Controller
     }
 
 
-    public function showCategory (){
-
+    public function showCategory(){
+       $categories = category::all();
+       return view('creator.event' ,['categories', $categories]);
 
     }
 

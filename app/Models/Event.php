@@ -18,7 +18,7 @@ class Event extends Model
        'lieu',
        'places',
        'user_id',
-       'category',
+       'category_id',
        'status',
        'event_time',
        'reservation_approval'

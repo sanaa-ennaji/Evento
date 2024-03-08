@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -34,11 +35,13 @@ Route::get('/evento' , function()
         return view('admin.categories');
     });
     
-    Route::get('/test' , function()
+    Route::get('/creator/event' , function()
     {
-        return view('test');
+        return view('creator.event');
     });
 
 Route::post('/Register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);
+// Route::post('/creator/event', [Category::class, 'showCategory']);
+

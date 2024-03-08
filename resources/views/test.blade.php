@@ -294,7 +294,7 @@
                                 for="file_input">Upload file</label>
                             <input
                                 class="block w-full text-sm text-purple-900 border border-purple-300 rounded-lg cursor-pointer bg-purple-50 dark:text-purple-400 focus:outline-none dark:bg-purple-700 dark:border-purple-600 dark:placeholder-purple-400"
-                                aria-describedby="file_input_help" name="images" id="images" 
+                                aria-describedby="file_input_help" name="image" id="images" 
                                  type="file">
                             <p class="mt-1 text-sm text-purple-500 dark:text-gray-300" id="file_input_help">SVG, PNG,
                                 JPG or GIF (MAX. 800x400px).</p>
