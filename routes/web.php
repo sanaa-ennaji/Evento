@@ -29,7 +29,10 @@ Route::get('/evento' , function()
         return view('register');
     });
 
-
+    Route::get('/admin/categories' , function()
+    {
+        return view('admin.categories');
+    });
     
     Route::get('/test' , function()
     {

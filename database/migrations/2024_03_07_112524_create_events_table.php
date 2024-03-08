@@ -30,6 +30,8 @@ return new class extends Migration
             ->onDelete('cascade')
             ->onUpdate('cascade');
             $table->boolean('status')->default(1);
+            $table->time('event_time');
+            $table->boolean('reservation_approval')->default(0);
             $table->timestamps();
         });
     }

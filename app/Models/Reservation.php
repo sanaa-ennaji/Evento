@@ -9,10 +9,11 @@ class Reservation extends Model
 {
     use HasFactory;
     protected $fillable = [
-    'reservation_approval', 
+    'is_validated',
     'type',
      'user_id',
-     'event_id'
+     'event_id',
+     ''
     ];
 
     public function client()

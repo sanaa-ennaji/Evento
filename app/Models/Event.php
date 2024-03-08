@@ -19,7 +19,10 @@ class Event extends Model
        'places',
        'user_id',
        'category',
-       'status'
+       'status',
+       'event_time',
+       'reservation_approval'
+
     ];
 
 public function category (){
