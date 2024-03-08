@@ -16,16 +16,8 @@ class UserController extends Controller
             'password'=>['required'],
             'address' =>['required'],
             'role'=>['required'],
-            // 'profile' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif'],
         ]);
        
-       
-        // if ($request->hasFile('profile')) {
-        //     $file = $request->file('profile');
-        //     $imageName = time() . '.' . $file->extension();
-        //     $file->storeAs('public/img', $imageName);
-        //     $datad['profile'] = $imageName;
-        // }
         
         $datad['password'] = bcrypt($datad['password']);
        $user= User::create($datad);

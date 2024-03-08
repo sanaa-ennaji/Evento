@@ -208,7 +208,7 @@
                 </div>
 
 
-                <form class="p-4 md:p-5" method="POST" action="/createEvent" enctype="multipart/form-data">
+                <form class="p-4 md:p-5" method="POST" action="/createCategory">
                     @csrf
                     <div class="grid gap-4 mb-4 grid-cols-2">
                         <div class="col-span-2 sm:col-span-1">
@@ -216,78 +216,6 @@
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">title</label>
                         <input type="text" id="title" name="title"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                        </div>
-
-
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="places"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">places</label>
-                        <input type="number" id="places" name="places"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-
-                        </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="city"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">lieu</label>
-                            <select id="city" name="lieu"
-                                class="citySelect bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected value="">select city</option>
-                                <option value="paris">paris</option>
-                            </select>
-                        </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="date"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">date</label>
-                            <input type="date" id="date" name="date"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                         
-                        </div>
-
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="normal_price"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Normal price</label>
-                            <input type="number" name="normal_price" id="normal_price"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="$2999" required="">
-                        </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="VIP_price"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">VIP price</label>
-                            <input type="number" name="VIP_price" id="VIP_price"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                placeholder="$2999" required="">
-                        </div>
-
-
-
-                        <div class="col-span-2">
-                            <label for="category"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">category</label>
-                                <select id="category" name="category"
-                                class="citySelect bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected value="">select category</option>
-                                <option value="paris">paris</option>
-                            </select>
-                        </div>
-                     
-                        <div class="col-span-2">
-                            <label for="description"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                Description</label>
-                            <textarea id="description" name="description" rows="4"
-                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Write description here"></textarea>
-                        </div>
-                        <div>
-
-                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                for="file_input">Upload file</label>
-                            <input
-                                class="block w-full text-sm text-purple-900 border border-purple-300 rounded-lg cursor-pointer bg-purple-50 dark:text-purple-400 focus:outline-none dark:bg-purple-700 dark:border-purple-600 dark:placeholder-purple-400"
-                                aria-describedby="file_input_help" name="images" id="images" 
-                                 type="file">
-                            <p class="mt-1 text-sm text-purple-500 dark:text-gray-300" id="file_input_help">SVG, PNG,
-                                JPG or GIF (MAX. 800x400px).</p>
                         </div>
                     </div>
                     <button type="submit" 
