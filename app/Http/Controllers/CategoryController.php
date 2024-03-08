@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
    
-    public function ctreateCategory(Request $request){
+    public function createCategory(Request $request){
       
         $category =$request->validate([
             'title' => ['required']
