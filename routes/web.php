@@ -29,6 +29,13 @@ Route::get('/evento' , function()
         return view('register');
     });
 
+
+    
+    Route::get('/test' , function()
+    {
+        return view('test');
+    });
+
 Route::post('/Register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
 Route::post('/logout', [UserController::class, 'logout']);

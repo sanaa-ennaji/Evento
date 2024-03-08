@@ -11,9 +11,7 @@
     <style>
         #controls-carousel{
             height: 90vh;
-            
    background-color: rgb(206, 200, 208);
-   
 
         }
     </style>
@@ -22,26 +20,30 @@
     
 
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-2">
         <a href="/evento" class="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="img/evento2.png" class="h-10 "  alt="Logo" />
             <span class="font-mono text-2xl font-semibold whitespace-nowrap text-purple-500 dark:text-white ml-5">Evento</span>
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             @auth
-            <button type="button" class="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+            <button type="button" class="flex text-sm  md:me-0  " id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
                
-                <img class="w-8 h-8 rounded-full" src="img/pexels-designecologist-2526105 copy.jpg" alt="user photo">
-              </button>
-              @else
-            <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-purple-500 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">login</button>
-            @endauth
+                <img class="mt-3 w-8 h-8 rounded-full" src="img/pexels-designecologist-2526105 copy.jpg" alt="user photo">
+               
+            
+              <div class="p-2 md:block text-left">
+                <h2 class="text-sm font-semibold text-gray-800">{{ Auth::user()->name }}</h2>
+                <p class="text-xs text-gray-500">{{ Auth::user()->role }}</p>
+            </div>
+        </button>
+          
            
               
               <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
                 <div class="px-4 py-3">
-                  <span class="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-                  <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
+                  <span class="block text-sm text-gray-900 dark:text-white">{{ Auth::user()->name }}</span>
+                  <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">{{ Auth::user()->email }}</span>
                 </div>
                 <ul class="py-2" aria-labelledby="user-menu-button">
                   <li>
@@ -65,7 +67,9 @@
                   </li>
                 </ul>
               </div>
-        
+              @else
+              <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" class="text-white bg-purple-500 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">login</button>
+              @endauth
 
             <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-cta" aria-expanded="false">
               <span class="sr-only">Open main menu</span>
@@ -129,7 +133,7 @@
                       <div class="flex justify-between">
                           <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Lost Password?</a>
                       </div>
-                      <button type="submit" class="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-purple-700 dark:focus:ring-blue-800">Login to your account</button>
+                      <button type="submit" class="w-full text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-purple-700 dark:focus:ring-blue-800">Log in </button>
                       <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
                           Not Registered? <a href="/register" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
                       </div>
@@ -143,11 +147,11 @@
         <div class="relative h-[100%] overflow-hidden w-[90%] mx-auto mt-8">
            
             <div class="hidden duration-700 ease-in-out " data-carousel-item>
-                <img src="img/pexels-luis-quintero-2774556.jpg" class="absolute block w-full mt-50 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                <img src="img/pexels-wendy-wei-3812950.jpg" class="absolute block w-full mt-50 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </div>
             
             <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                <img src="img/pexels-designecologist-2526105 copy.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                <img src="img/pexels-josh-sorenson-976866.jpg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
             </div>
           
             <div class="hidden duration-700 ease-in-out" data-carousel-item>
