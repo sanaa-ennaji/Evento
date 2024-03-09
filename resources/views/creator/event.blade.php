@@ -238,7 +238,7 @@
                         <div class="col-span-2 sm:col-span-1">
                             <label for="time"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">time</label>
-                            <input type="time" id="time" name="time"
+                            <input type="time" id="time" name="event_time"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                          
                         </div>
@@ -261,21 +261,21 @@
 
 
                         <div class="col-span-2 sm:col-span-1">
-                            <label for="category"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">category</label>
-                                <select id="category" name="category"
-                                class="citySelect bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected value="">select category</option>
-                                <option value="paris">paris</option>
+                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                            <select id="category" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                <option selected value="">Select Category</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->title}}</option>
+                                @endforeach
                             </select>
                         </div>
                          
                         <div class="col-span-2 sm:col-span-1">
                             <label for="city"
-                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">lieu</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">city</label>
                             <select id="city" name="lieu"
                                 class="citySelect bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                                <option selected value="">select city</option>
+                                <option selected value="">city</option>
                                 <option value="paris">paris</option>
                             </select>
                         </div>
@@ -316,6 +316,6 @@
     </div>
 
     </div>
-    <script src="js/cities.js"></script>
+    <script src="../js/cities.js"></script>
 </body>
 </html>

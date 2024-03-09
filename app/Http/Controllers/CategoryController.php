@@ -22,10 +22,11 @@ class CategoryController extends Controller
 
 
     public function showCategory(){
-       $categories = category::all();
-       return view('creator.event' ,['categories', $categories]);
-
+        $categories = Category::all();
+        return view('creator.event', ['categories' => $categories]);
     }
+ 
+    
 
     public function updateCategory (){
 

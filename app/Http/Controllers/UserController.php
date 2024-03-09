@@ -46,7 +46,7 @@ class UserController extends Controller
     
         
             if ($user->role === 'admin') {
-                return redirect('/admin');
+                return redirect('/admin/events');
             } elseif ($user->role === 'creator') {
                 return redirect('/creator/event');
             } elseif ($user->role === 'client') {

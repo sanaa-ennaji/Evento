@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    fetch('json/cities.json')
+    fetch('../json/cities.json')
         .then(response => response.json())
         .then(data => {
             const citySelect = document.getElementById('city');
@@ -48,6 +48,23 @@ function closeModal(modalId) {
 
     modal.classList.add('hidden');
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
