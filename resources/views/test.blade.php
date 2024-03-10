@@ -88,7 +88,7 @@
     <div class="xl:w-2/5 md:w-1/2 lg:ml-8 md:ml-6 md:mt-0 mt-6">
       <div class="border-b border-gray-200 pb-6">
     <p class="text-sm leading-none text-gray-600 dark:text-gray-300 ">{</p>
-        <h1 class="lg:text-2xl text-xl font-semibold lg:leading-6 leading-7 text-gray-800 dark:text-white mt-2">Balenciaga Signature Sweatshirt</h1>
+        <h1 class="lg:text-2xl text-xl font-semibold lg:leading-6 leading-7 text-gray-800 dark:text-white mt-2">{{$event->title}}</h1>
       </div>
       <div class="py-4 border-b border-gray-200 flex items-center justify-between">
         <p class="text-base leading-4 text-gray-800 dark:text-gray-300">Colours</p>

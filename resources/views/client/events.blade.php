@@ -20,7 +20,7 @@
 
 <body id="controls-carousel">
     <nav class="bg-white border-gray-200 dark:bg-gray-900">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-5">
             <a href="/evento" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="img/evento2.png" class="h-10 " alt="Logo" />
                 <span
@@ -79,7 +79,8 @@
                     </div>
                 @else
                     <button type="button" data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-                        class="text-white bg-purple-500 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">login</button>
+                        class="text-white bg-purple-500 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        login</button>
                 @endauth
 
                 <button data-collapse-toggle="navbar-cta" type="button"
@@ -122,7 +123,7 @@
 
 
     <!--  LOG IN -->
-    <div tabindex="-1" aria-hidden="true"
+    <div id="authentication-modal" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-md max-h-full">
 
@@ -179,7 +180,7 @@
         </div>
     </div>
 
-    <div id="" class="relative" data-carousel="static">
+    <div  class="relative" data-carousel="static">
 
         <div class="relative h-[90%] overflow-hidden w-[85%] mx-auto my-10 ">
 
@@ -297,24 +298,14 @@
                                 {{$event->creator->name}}
                             </p>
                         </a>
-                        <a href="/eventDetails{{$event->id}}"
-                        class="
-             inline-block
-             py-2
-             px-7
-             border border-[#E5E7EB]
-             rounded-full
-             text-base text-body-color
-             font-medium
-             hover:bg-purple-600 hover:bg-primary hover:text-white
-             transition
-             ">
-                        View Details
-                    </a>
+                        <a href="{{ route('event.details', ['id' => $event->id]) }}" class="inline-block py-2 px-7 border border-[#E5E7EB] rounded-full text-base text-body-color font-medium hover:bg-purple-600 hover:bg-primary hover:text-white transition">
+                            View Details
+                        </a>
+                        
                     </footer>
 
                 </article>
-                <!-- END Article -->
+               
 
             </div>
           @endforeach
@@ -399,6 +390,8 @@
         </div>
     </div>
 </footer>
+
+      <script src="../js/cities.js"></script>
 </body>
 
 </html>

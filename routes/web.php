@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,11 @@ Route::get('/evento' , function()
     {
         return view('admin.events');
     });
+    
+    Route::get('/creator/reservations' , function()
+    {
+        return view('creator.reservations');
+    });
 
 Route::post('/Register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
@@ -61,4 +67,7 @@ Route::post('/createEvent', [EventController::class, 'ctreateEvent']);
 Route::get('/admin/events', [EventController::class, 'showEventAdmin']);
 Route::put('/accepte/event/{id}', [EventController::class, 'accepteEvent']);
 Route::get('/evento', [EventController::class, 'displayEvent']);
-Route::get('/eventDetails/{id}', [EventController::class, 'showDetails'])->name('event.show');
+
+Route::get('/eventDetails/{id}', [EventController::class ,'showDetails'])->name('event.details');
+Route::post('/createReservation',[ReservationController::class ,'ctreateReservation'])->name('create.reservation');
+

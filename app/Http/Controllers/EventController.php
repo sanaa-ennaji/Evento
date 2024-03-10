@@ -47,9 +47,11 @@ class EventController extends Controller
     public function showDetails($id)
     {
         $event = Event::findOrFail($id);
-        return view('/eventDetails/{id}', compact('event'));
+        if (!$event) {
+            return abort(404); 
+        }
+        return view('client.eventDetails', compact('event'));
     }
-    
 
     public function showEventAdmin(){
     $events = Event::all();
