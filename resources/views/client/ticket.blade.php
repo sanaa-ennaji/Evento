@@ -122,14 +122,14 @@ rel="stylesheet" />
                 <div class="mt-4">
                     <div class="font-bold text-gray-800 text-xl">{{$reservation->event->title}}</div>
                     <div class="flex justify-between items-center mt-2">
-                        <div class="text-sm text-gray-600">{{$reservation->type}}</div>
-                        <img class="h-10 w-10" src="https://www.svgrepo.com/show/362011/mastercard.svg" alt="Mastercard logo">
+                        <div class="text-sm text-gray-600">price -> {{$reservation->type}}</div>
+                        {{-- <img class="h-10 w-10" src="../img/evento2.png" alt="Mastercard logo"> --}}
                     </div>
                 </div>
             </div>
             <div class="bg-gray-100 px-6 py-4">
                 <div class="font-medium text-gray-600">{{$reservation->event->date}}</div>
-                <div class="text-lg font-bold text-gray-800 mt-2">***</div>
+                <div class="text-lg font-bold text-gray-800 mt-2">{{$reservation->event->event_time}}</div>
             </div>
         </div>
     </div>

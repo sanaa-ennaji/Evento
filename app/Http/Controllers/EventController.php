@@ -155,9 +155,6 @@ public function deleteEvent(Event $event){
  }
  
 
- public function updateEvent(){
-
- }
 
    
 

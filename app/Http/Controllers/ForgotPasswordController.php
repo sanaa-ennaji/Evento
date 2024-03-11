@@ -16,7 +16,7 @@ class ForgotPasswordController extends Controller
         return view('auth.forgetPassword');
     }
 
-    // Handle the request to send a password reset link
+  
     public function sendResetLinkEmail(Request $request)
     {
         $request->validate(['email' => 'required|email']);
@@ -28,13 +28,13 @@ class ForgotPasswordController extends Controller
             : back()->withErrors(['email' => __($status)]);
     }
 
-    // Show the form to reset the password
+   
     public function showResetForm(Request $request, $token)
     {
         return view('auth.resetPassword', ['token' => $token, 'email' => $request->email]);
     }
 
-    // Handle the password reset request
+ 
     public function reset(Request $request)
     {
         $request->validate([
