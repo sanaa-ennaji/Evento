@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Event extends Model
 {
@@ -33,6 +34,10 @@ public function category (){
 public function creator()
 {
     return $this->belongsTo(User::class, 'user_id');
+}
+public function reservations()
+{
+    return $this->hasMany(Reservation::class, 'event_id');
 }
 
 }

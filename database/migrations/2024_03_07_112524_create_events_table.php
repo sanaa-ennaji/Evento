@@ -29,9 +29,11 @@ return new class extends Migration
             ->constrained('categories')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->boolean('status')->default(1);
+            // $table->boolean('status');
+            $table->enum('status',['pending','accepted','rejected'])->default('pending');
             $table->time('event_time');
-            $table->boolean('reservation_approval')->default(0);
+            // $table->boolean('reservation_approval')->default(0);
+            $table->enum('reservation_approval',['manually','automatic'])->default('manually'); 
             $table->timestamps();
         });
     }

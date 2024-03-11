@@ -19,8 +19,8 @@
 </head>
 
 <body id="controls-carousel">
-    <nav class="bg-white border-gray-200 dark:bg-gray-900">
-        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4 py-5">
+    <nav class="bg-white border-gray-200 dark:bg-gray-900 py-2">
+        <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto px-4">
             <a href="/evento" class="flex items-center space-x-3 rtl:space-x-reverse">
                 <img src="img/evento2.png" class="h-10 " alt="Logo" />
                 <span
@@ -82,6 +82,7 @@
                         class="text-white bg-purple-500 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         login</button>
                 @endauth
+                 
 
                 <button data-collapse-toggle="navbar-cta" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -180,152 +181,113 @@
         </div>
     </div>
 
-    <div  class="relative" data-carousel="static">
-
-        <div class="relative h-[90%] overflow-hidden w-[85%] mx-auto my-10 ">
-
-            <div class="hidden duration-700 ease-in-out " data-carousel-item>
-                <img src="img/pexels-wendy-wei-3812950.jpg"
-                    class="absolute block w-full mt-50 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                    alt="...">
+    <div class=" flex justify-center items-center mt-10">
+        <form action="/search" method="GET" class="max-w-[480px] w-full px-4">
+          @csrf
+            <div class="relative">
+                <input type="text" name="query" class="w-full border h-12 shadow p-4 rounded-full" placeholder="search">
+                <button type="submit">
+                    <svg class="text-purple-400 h-5 w-5 absolute top-3.5 right-3 fill-current "
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"
+                        x="0px" y="0px" viewBox="0 0 56.966 56.966"
+                        style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve">
+                        <path
+                            d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z">
+                        </path>
+                    </svg>
+            </button>
             </div>
+        </form>
+      </div>
+    
+   
+    <form  action="{{ route('events.display') }}" method="GET" class="flex ml-12  mt-6 w-[20%]">
+        
+        <select name="category" id="category" class="shadow appearance-none border rounded w-full  px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+            <option value="">All Categories</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->title }}</option>
+            @endforeach
+        </select>
+        <button type="submit" class="bg-purple-600 text-white py-2 px-4 rounded">Filter</button>
+    </form>
+    
 
-            <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                <img src="img/pexels-josh-sorenson-976866.jpg"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </div>
+   
 
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="img/pexels-josh-sorenson-976866.jpg"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </div>
-
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="img/pexels-luis-quintero-2774556.jpg"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </div>
-
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="img/pexels-wendy-wei-3812950.jpg"
-                    class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
-            </div>
-        </div>
-        <button type="button"
-            class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-5 cursor-pointer group focus:outline-none"
-            data-carousel-prev>
-            <span
-                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M5 1 1 5l4 4" />
-                </svg>
-                <span class="sr-only">Previous</span>
-            </span>
-        </button>
-        <button type="button"
-            class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-            data-carousel-next>
-            <span
-                class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="m1 9 4-4-4-4" />
-                </svg>
-                <span class="sr-only">Next</span>
-            </span>
-        </button>
-    </div>
-
-
-
-
-    <div class="container my-12 mx-auto px-4 md:px-12">
+    <div class="container mb-12 mx-auto px-4 md:px-12 ">
         <div class="flex flex-wrap -mx-1 lg:-mx-4">
-   @foreach($events as $event)
-            <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
-
-              
-                <article class="overflow-hidden rounded-lg shadow-lg">
-
-                    <a href="#">
-                        <img alt="Placeholder" class="block h-auto w-full"
-                        src="{{asset('storage/img/' . $event->image)}}">
-                    </a>
-                    <h3 class="pt-2 px-2 md:px-4">
-                        <a href="javascript:void(0)"
-                            class="
-                font-semibold
-                text-dark text-xl
-                sm:text-[22px]
-                md:text-xl
-                lg:text-[22px]
-                xl:text-xl
-                2xl:text-[22px]
-                mb-4
-                block
-                hover:text-primary
-                ">
-                {{$event->title}}
+            @foreach($events as $event)
+                <div class=" px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3 ">
+                    <article class="overflow-hidden rounded-lg shadow-lg bg-white">
+                        <a href="#">
+                            <img alt="Placeholder" class="block h-auto w-full" src="{{ asset('storage/img/' . $event->image) }}">
                         </a>
-                    </h3>
-                    <header class="flex items-center justify-between leading-tight px-2 md:px-4 ">
-                        <h1 class="text-lg flex items-center space-x-1">
-                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd" d="M12 2a8 8 0 0 1 6.6 12.6l-.1.1-.6.7-5.1 6.2a1 1 0 0 1-1.6 0L6 15.3l-.3-.4-.2-.2v-.2A8 8 0 0 1 11.8 2Zm3 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" clip-rule="evenodd"/>
-                              </svg>
-                              
-                            <a class="no-underline hover:underline text-black" href="#">
-                                {{$event->lieu}}
+                        <h3 class="pt-2 px-2 md:px-4">
+                            <a href="javascript:void(0)"
+                                class="font-semibold text-dark text-xl sm:text-[22px] md:text-xl lg:text-[22px] xl:text-xl 2xl:text-[22px] mb-4 block hover:text-primary">
+                                {{ $event->title }}
                             </a>
-                        </h1>
-                        <h1 class="text-lg flex items-center space-x-1">
-                            <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                                <path fill-rule="evenodd" d="M5 5c.6 0 1-.4 1-1a1 1 0 1 1 2 0c0 .6.4 1 1 1h1c.6 0 1-.4 1-1a1 1 0 1 1 2 0c0 .6.4 1 1 1h1c.6 0 1-.4 1-1a1 1 0 1 1 2 0c0 .6.4 1 1 1a2 2 0 0 1 2 2v1c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V7c0-1.1.9-2 2-2ZM3 19v-7c0-.6.4-1 1-1h16c.6 0 1 .4 1 1v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Zm6-6c0-.6-.4-1-1-1a1 1 0 1 0 0 2c.6 0 1-.4 1-1Zm2 0a1 1 0 1 1 2 0c0 .6-.4 1-1 1a1 1 0 0 1-1-1Zm6 0c0-.6-.4-1-1-1a1 1 0 1 0 0 2c.6 0 1-.4 1-1ZM7 17a1 1 0 1 1 2 0c0 .6-.4 1-1 1a1 1 0 0 1-1-1Zm6 0c0-.6-.4-1-1-1a1 1 0 1 0 0 2c.6 0 1-.4 1-1Zm2 0a1 1 0 1 1 2 0c0 .6-.4 1-1 1a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
-                              </svg>
-                        <p class="text-grey-darker text-sm"> 
-                            {{$event->date}}
-                        </p>
-                    </h1>
-                    </header>
-
-                    <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-                        <a class="flex items-center no-underline hover:underline  text-black" href="#">
-                            <img alt="Placeholder" class="block rounded-full"
-                                src="https://picsum.photos/32/32/?random">
-                            <p class="ml-2 text-sm">
-                                {{$event->creator->name}}
-                            </p>
-                        </a>
-                        <a href="{{ route('event.details', ['id' => $event->id]) }}" class="inline-block py-2 px-7 border border-[#E5E7EB] rounded-full text-base text-body-color font-medium hover:bg-purple-600 hover:bg-primary hover:text-white transition">
-                            View Details
-                        </a>
-                        
-                    </footer>
-
-                </article>
-               
-
-            </div>
-          @endforeach
-
-            
-
+                        </h3>
+                        <header class="flex items-center justify-between leading-tight px-2 md:px-4 ">
+                            <h1 class="text-lg flex items-center space-x-1">
+                                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                        d="M12 2a8 8 0 0 1 6.6 12.6l-.1.1-.6.7-5.1 6.2a1 1 0 0 1-1.6 0L6 15.3l-.3-.4-.2-.2v-.2A8 8 0 0 1 11.8 2Zm3 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <a class="no-underline hover:underline text-black" href="#">
+                                    {{ $event->lieu }}
+                                </a>
+                            </h1>
+                            <h1 class="text-lg flex items-center space-x-1">
+                                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd"
+                                        d="M5 5c.6 0 1-.4 1-1a1 1 0 1 1 2 0c0 .6.4 1 1 1h1c.6 0 1-.4 1-1a1 1 0 1 1 2 0c0 .6.4 1 1 1h1c.6 0 1-.4 1-1a1 1 0 1 1 2 0c0 .6.4 1 1 1a2 2 0 0 1 2 2v1c0 .6-.4 1-1 1H4a1 1 0 0 1-1-1V7c0-1.1.9-2 2-2ZM3 19v-7c0-.6.4-1 1-1h16c.6 0 1 .4 1 1v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Zm6-6c0-.6-.4-1-1-1a1 1 0 1 0 0 2c.6 0 1-.4 1-1Zm2 0a1 1 0 1 1 2 0c0 .6-.4 1-1 1a1 1 0 0 1-1-1Zm6 0c0-.6-.4-1-1-1a1 1 0 1 0 0 2c.6 0 1-.4 1-1ZM7 17a1 1 0 1 1 2 0c0 .6-.4 1-1 1a1 1 0 0 1-1-1Zm6 0c0-.6-.4-1-1-1a1 1 0 1 0 0 2c.6 0 1-.4 1-1Zm2 0a1 1 0 1 1 2 0c0 .6-.4 1-1 1a1 1 0 0 1-1-1Z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <p class="text-grey-darker text-sm">
+                                    {{ $event->date }}
+                                </p>
+                            </h1>
+                        </header>
+    
+                        <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                            <a class="flex items-center no-underline hover:underline text-black" href="#">
+                                <img alt="Placeholder" class="block rounded-full"
+                                    src="https://picsum.photos/32/32/?random">
+                                <p class="ml-2 text-sm">
+                                    {{ $event->creator->name }}
+                                    {{-- {{ $event->category_id }} --}}
+                                </p>
+                            </a>
+                            <a href="{{ route('event.details', ['id' => $event->id]) }}"
+                                class="inline-block py-2 px-7 border border-[#E5E7EB] rounded-full text-base text-body-color font-medium bg-purple-600  text-white transition">
+                                View Details
+                            </a>
+                        </footer>
+                    </article>
+                </div>
+            @endforeach
+        </div>
+        <div class="mt-4">
+            {{ $events->links() }}
         </div>
     </div>
-
+    
 <!-- footer -->
 <footer class="bg-white dark:bg-gray-900">
     <div class="container px-6 py-12 mx-auto">
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-y-10 lg:grid-cols-4">
             <div class="sm:col-span-2">
-                <h1 class="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl dark:text-white">Subscribe our newsletter to get update.</h1>
+                <h1 class="max-w-lg text-xl font-semibold tracking-tight text-gray-800 xl:text-2xl dark:text-white">Subscribe to get update.</h1>
 
                 <div class="flex flex-col mx-auto mt-6 space-y-3 md:space-y-0 md:flex-row">
                     <input id="email" type="text" class="px-4 py-2 text-gray-700 bg-white border rounded-md dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 dark:focus:border-blue-300 focus:outline-none focus:ring focus:ring-opacity-40 focus:ring-blue-300" placeholder="Email Address">
             
-                    <button class="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                    <button class="w-full px-6 py-2.5 text-sm font-medium tracking-wider text-white transition-colors duration-300 transform md:w-auto md:mx-4 focus:outline-none bg-purple-800 rounded-lg hover:bg-purple-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
                         Subscribe
                     </button>
                 </div>
@@ -336,18 +298,18 @@
 
                 <div class="flex flex-col items-start mt-5 space-y-2">
                     <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Home</a>
-                    <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Who We Are</a>
-                    <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Our Philosophy</a>
+                    <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">about us</a>
+                    <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">contact us</a>
                 </div>
             </div>
 
             <div>
-                <p class="font-semibold text-gray-800 dark:text-white">Industries</p>
+                <p class="font-semibold text-gray-800 dark:text-white">categories</p>
 
                 <div class="flex flex-col items-start mt-5 space-y-2">
-                    <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Retail & E-Commerce</a>
-                    <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Information Technology</a>
-                    <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">Finance & Insurance</a>
+                    <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">sports</a>
+                    <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">conference</a>
+                    <a href="#" class="text-gray-600 transition-colors duration-300 dark:text-gray-300 dark:hover:text-blue-400 hover:underline hover:text-blue-500">festivals</a>
                 </div>
             </div>
         </div>
@@ -355,8 +317,10 @@
         <hr class="my-6 border-gray-200 md:my-8 dark:border-gray-700">
         
         <div class="flex items-center justify-between">
-            <a href="#">
-                <img class="w-auto h-7" src="https://merakiui.com/images/full-logo.svg" alt="">
+            <a href="/evento" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="img/evento2.png" class="h-10 " alt="Logo" />
+                <span
+                    class="font-mono text-3xl font-semibold whitespace-nowrap text-purple-500 dark:text-white ">Evento</span>
             </a>
             
             <div class="flex -mx-2">

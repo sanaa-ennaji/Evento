@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
-            $table->boolean('is_validated')->default(0);
+            // $table->boolean('is_validated')->default(0);
+            $table->enum('is_validated',['pending','accepted','rejected'])->default('pending');
             $table->integer('type');
             $table->foreignId('user_id')
             ->constrained('users')

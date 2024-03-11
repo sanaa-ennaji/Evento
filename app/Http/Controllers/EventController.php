@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+
 
 class EventController extends Controller
 {
@@ -32,18 +35,39 @@ class EventController extends Controller
         $Event['user_id'] = auth()->id();
         Event::create($Event);
         // return response()->json($Event, 200);
-        return view('/creator/event');
+        return redirect()->back()->with('success', 'status updated successfully');
 
     }
 
-    public function displayEvent()
-    {
-        $events = Event::where('status', 0)
-                        ->orderBy('date', 'asc')
-                        ->get();
     
+    public function displayEvent(Request $request)
+    {
+        // Start with the base query
+        $query = Event::where('status', 'accepted')
+                       ->orderBy('date', 'asc')
+                       ->with('creator', 'category'); 
+    
+       
+        if ($request->has('category') && $request->input('category') != '') {
+            $categoryId = $request->input('category');
+            $query->where('category_id', $categoryId);
+        }
+        $events = $query->paginate(10);
         return view('client.events', ['events' => $events]);
     }
+    
+
+
+//     public function displayEvent()
+// {
+//     $events = Event::where('status', 'accepted')
+//                    ->orderBy('date', 'asc')
+//                    ->with('creator') 
+//                    ->paginate(10);
+
+//     return view('client.events', ['events' => $events]);
+// }
+    
     public function showDetails($id)
     {
         $event = Event::findOrFail($id);
@@ -61,9 +85,11 @@ class EventController extends Controller
 
     public function accepteEvent(Request $request, $id)
     {
+        
         $request->validate([
             'status' => 'required',
         ]);
+       
     
         $event = Event::findOrFail($id);
         if (Auth::id() !== $event->user_id) {
@@ -75,17 +101,82 @@ class EventController extends Controller
         return redirect()->back()->with('success', 'status updated successfully');
     }
 
-
-
-    public function getEventById (){
-
-
+    public function approvementType(Request $request, $id)
+    {
+        
+        $request->validate([
+            'reservation_approval' => 'required',
+        ]);
+       
+    
+        $event = Event::findOrFail($id);
+        if (Auth::id() !== $event->user_id) {
+            return view('/evento');
+        }
+    
+        $event->update(['reservation_approval' => $request->input('reservation_approval')]);
+   
+        return redirect()->back()->with('success', 'status updated successfully');
     }
-    public function updateEvent(){
 
+    public function showCategoryAndEvents()
+{
+    $userId = Auth::id();
+    $categories = Category::all();
+    $events = Event::where('user_id', $userId)->get();
+
+    return view('creator.event', compact('categories', 'events'));
+}
+
+
+public function deleteEvent(Event $event){
+    if (auth()->user()->id == $event['user_id'] ){
+        $event->reservations()->delete();
+        $event->delete();
+     } 
+     return redirect('/creator/event');
+}
+    
+
+    public function showReservationsForUserEvents()
+    {
+        $userId = Auth::id();
+        $reservations = Event::where('user_id', $userId)->with('reservations')->get()->pluck('reservations')->flatten();
+        return view('creator.reservations', compact('reservations'));
     }
 
-    public function deleteEvent(){
+   
 
-    }
+    public function search(Request $request)
+    {
+     $query = $request->input('query');
+ 
+     $events = Event::where('title', 'like', '%' . $query . '%')->get();
+ 
+     return view('client.events', ['events' => $events , 'query' => $query]);
+ }
+ 
+
+ public function updateEvent(){
+
+ }
+
+   
+
+
+
+
+
+
+
+
+
+
+   // public function creatorEvents()
+    // {
+    //     $userId = Auth::id();
+    //     $events =  Event::where('user_id', $userId)->get();
+    //     return view('creator.event', compact('events'));
+    // }
+    
 }
