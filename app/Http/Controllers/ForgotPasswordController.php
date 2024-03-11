@@ -40,8 +40,9 @@ class ForgotPasswordController extends Controller
         $request->validate([
             'token' => 'required',
             'email' => 'required|email',
-            'password' => 'required|confirmed|min:8',
+            'password' => 'required|confirmed',
         ]);
+        
 
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
@@ -53,7 +54,7 @@ class ForgotPasswordController extends Controller
         );
 
         return $status == Password::PASSWORD_RESET
-            ? redirect()->route('login')->with(['status' => __($status)])
+            ? redirect('/evento')
             : back()->withErrors(['email' => [__($status)]]);
     }
 }

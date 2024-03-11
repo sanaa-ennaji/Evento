@@ -109,38 +109,30 @@ rel="stylesheet" />
         </div>
     </nav>
 
-
-    <div class="flex flex-wrap -mx-1 lg:-mx-4 px-5 h-[100vh]">
-    @foreach($reservations as $reservation)
-<div class="flex flex-col py-5 px-5">
-	<div
-		class="relative  flex flex-col md:flex-row md:space-x-5 space-y-3 md:space-y-0 rounded-xl shadow-lg p-3 max-w-3xl mx-auto border border-white bg-white">
-		<div class="w-full md:w-1/3 bg-white grid place-items-center">
-			<img  src="{{asset('storage/img/' . $reservation->event->image)}}" alt="tailwind logo" class="rounded-xl" />
+    <div class="mx-auto max-w-lg mt-40">
+        <div class="bg-white rounded-lg overflow-hidden shadow-lg">
+            <div class="px-6 py-4">
+                <div class="flex justify-between items-center">
+                  
+                        <img src="../img/evento2.png" class="h-10 " alt="Logo" />
+                        <span
+                            class="font-mono text-3xl font-semibold whitespace-nowrap text-purple-500 dark:text-white ">Evento</span>
+                   
+                </div>
+                <div class="mt-4">
+                    <div class="font-bold text-gray-800 text-xl">{{$reservation->event->title}}</div>
+                    <div class="flex justify-between items-center mt-2">
+                        <div class="text-sm text-gray-600">{{$reservation->type}}</div>
+                        <img class="h-10 w-10" src="https://www.svgrepo.com/show/362011/mastercard.svg" alt="Mastercard logo">
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-100 px-6 py-4">
+                <div class="font-medium text-gray-600">{{$reservation->event->date}}</div>
+                <div class="text-lg font-bold text-gray-800 mt-2">***</div>
+            </div>
+        </div>
     </div>
-			<div class="w-full md:w-2/3 bg-white flex flex-col space-y-2 p-3">
-				<div class="flex justify-between item-center">
-				
-					<div class="bg-gray-200 px-3 py-1 rounded-full text-xs font-medium text-gray-800 hidden md:block">
-						{{$reservation->is_validated}}</div>
-				</div>
-				<h3 class="font-black text-gray-800 md:text-3xl text-xl">{{$reservation->event->title}}</h3>
-				
-				<p class="text-xl font-black text-gray-800">
-					{{$reservation->type}}
-					<span class="font-normal text-gray-600 text-base">/{{$reservation->event->date}}</span>
-				</p>
-                <a
-                href="{{ route('ticket.details', ['id' => $reservation->id]) }}"
-                   class="inline-block py-2 px-7 border border-[#E5E7EB] rounded-full text-base text-body-color font-medium bg-purple-600  text-white transition">
-                   View ticket
-               </a>
-			</div>
-		</div>
-      
-	</div>
-    @endforeach
-</div>
  
       <script src="../js/cities.js"></script>
 </body>

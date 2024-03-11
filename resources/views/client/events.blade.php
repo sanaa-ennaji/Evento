@@ -165,7 +165,7 @@
                                 required />
                         </div>
                         <div class="flex justify-between">
-                            <a href="#" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Lost
+                            <a href="/forgot-password" class="text-sm text-blue-700 hover:underline dark:text-blue-500">Lost
                                 Password?</a>
                         </div>
                         <button type="submit"

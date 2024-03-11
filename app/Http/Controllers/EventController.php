@@ -92,9 +92,7 @@ class EventController extends Controller
        
     
         $event = Event::findOrFail($id);
-        if (Auth::id() !== $event->user_id) {
-            return view('/evento');
-        }
+       
     
         $event->update(['status' => $request->input('status')]);
    

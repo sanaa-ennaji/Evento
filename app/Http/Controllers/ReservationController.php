@@ -54,8 +54,28 @@ class ReservationController extends Controller
     }
 
  
-
-    public function deleteReservation(){
-
+    public function showticket($id)
+    {
+        $userId = Auth::id();
+        $reservation = Reservation::where('user_id', $userId)
+            ->where('id', $id)
+            ->where(function ($query) {
+                $query->where('is_validated', 'accepted')
+                    ->orWhereHas('event', function ($eventQuery) {
+                        $eventQuery->where('reservation_approval', true);
+                    });
+            })
+            ->first();
+        if (!$reservation) {
+            return abort(404);
+        }
+    
+        return view('client.ticket', compact('reservation'));
     }
+    
+
+
+
+
+   
 }

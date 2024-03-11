@@ -73,6 +73,11 @@ Route::get('/evento' , function()
         return view('creator.statistique');
     });
 
+    Route::get('/client/ticket' , function()
+    {
+        return view('client.ticket');
+    });
+
   
 Route::post('/Register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login']);
@@ -109,9 +114,8 @@ Route::get('/admin/statistique', [UserController::class, 'statistics']);
 Route::get('/forgot-password', [ForgotPasswordController::class, 'index'])->name('password.forget');
 Route::post('/forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
-// Show the form to reset the password
-Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
 
-// Handle the password reset request
+Route::get('/reset-password/{token}', [ForgotPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('/reset-password', [ForgotPasswordController::class, 'reset'])->name('password.update');
 
+Route::get('/ticket/{id}', [ReservationController::class ,'showticket'])->name('ticket.details');
