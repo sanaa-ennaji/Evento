@@ -40,5 +40,3 @@ Cette plateforme permettra aux utilisateurs de découvrir, réserver et génére
 - En tant que développeur, je veux intégrer un système de paiement pour les réservations d'événements.
 
 ---
-
-Merci d'utiliser la plateforme **Evento** pour vos besoins en gestion et réservation d'événements !
